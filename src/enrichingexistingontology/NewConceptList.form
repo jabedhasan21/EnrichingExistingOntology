@@ -77,10 +77,10 @@
               </Border>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Malayalam MN" size="24" style="1"/>
+              <Font name="Malayalam MN" size="14" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="1" rowCount="99">
+              <Table columnCount="1" rowCount="0">
                 <Column editable="true" title="Suggested Concept" type="java.lang.String"/>
               </Table>
             </Property>
@@ -94,8 +94,8 @@
               </TableColumnModel>
             </Property>
             <Property name="columnSelectionAllowed" type="boolean" value="true"/>
-            <Property name="rowHeight" type="int" value="30"/>
-            <Property name="rowMargin" type="int" value="2"/>
+            <Property name="rowHeight" type="int" value="45"/>
+            <Property name="rowMargin" type="int" value="5"/>
             <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[10, 10]"/>
             </Property>
@@ -121,6 +121,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="java.awt.Label" name="titlelabel">
       <Properties>

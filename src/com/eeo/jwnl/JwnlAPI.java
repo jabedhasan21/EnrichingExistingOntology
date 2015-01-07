@@ -86,7 +86,7 @@ public class JwnlAPI {
                     }
                     
                     
-                    ParentConcept concept = new ParentConcept(word.getLemma(), sense.getGloss(), word.getPOS().getLabel());
+                    ParentConcept concept = new ParentConcept(word.getLemma(), sense.getGloss(), word.getPOS().getLabel(),sense.getOffset());
                     this.parentConcepts.add(concept);
                 }
                 

@@ -83,6 +83,11 @@ public class DefineNewConcept extends javax.swing.JFrame {
         headNewConceptLbl.setText("Define head of the new concept");
 
         cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         nextButton.setText("Next");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +190,12 @@ public class DefineNewConcept extends javax.swing.JFrame {
         selectParentConcept.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments

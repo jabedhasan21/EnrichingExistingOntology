@@ -13,6 +13,7 @@ import com.eeo.OpenNLP.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Jabed hasan
@@ -37,7 +38,8 @@ public class NewConceptList extends javax.swing.JFrame {
     public void initUI(){
         titlelabel.setText(titleConcept+" Suggested Concept ");
          for (int i=0; i< 5 ;i++) {
-            model.insertRow(model.getColumnCount(), new Object[]{ sentences[i] });
+            //model.insertRow(model.getColumnCount(), new Object[]{ sentences[i] });
+            model.addRow(new Object[]{ sentences[i] });
         }
     }
     /**
@@ -59,108 +61,10 @@ public class NewConceptList extends javax.swing.JFrame {
         setTitle("Enriching Existing Ontology");
 
         suggestedCncptTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        suggestedCncptTable.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
+        suggestedCncptTable.setFont(new java.awt.Font("Malayalam MN", 1, 14)); // NOI18N
         suggestedCncptTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Suggested Concept"
@@ -175,8 +79,8 @@ public class NewConceptList extends javax.swing.JFrame {
             }
         });
         suggestedCncptTable.setColumnSelectionAllowed(true);
-        suggestedCncptTable.setRowHeight(30);
-        suggestedCncptTable.setRowMargin(2);
+        suggestedCncptTable.setRowHeight(45);
+        suggestedCncptTable.setRowMargin(5);
         suggestedCncptTable.setSize(new java.awt.Dimension(10, 10));
         suggestedCncptTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,6 +98,11 @@ public class NewConceptList extends javax.swing.JFrame {
         });
 
         cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         titlelabel.setFont(new java.awt.Font("PT Sans Caption", 1, 18)); // NOI18N
         titlelabel.setText("Title");
@@ -234,8 +143,15 @@ public class NewConceptList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        
+        if(selectedValue.equals("")){
+          JOptionPane.showMessageDialog(this, "Plz select Value..!");
+          return;
+        }
+        
         try {
             System.out.println(" selectedValue : "+selectedValue);
+            
             String postTag = OpenNLP.POSTag(selectedValue);
             String[] nouns = OpenNLP.extractNouns(postTag);
             System.out.println("nouns : "+nouns.length);
@@ -255,6 +171,12 @@ public class NewConceptList extends javax.swing.JFrame {
     private void suggestedCncptTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suggestedCncptTableMouseClicked
         selectedValue = String.valueOf(model.getValueAt(suggestedCncptTable.getSelectedRow(), 0));
     }//GEN-LAST:event_suggestedCncptTableMouseClicked
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments

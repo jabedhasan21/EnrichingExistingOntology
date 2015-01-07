@@ -7,40 +7,32 @@ package enrichingexistingontology;
 
 import com.eeo.model.NewConcept;
 import com.eeo.model.ParentConcept;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author jabed hasan
  */
-public class SelectParentConcept extends javax.swing.JFrame {
+public class MappingNewConcept extends javax.swing.JFrame {
 
     /**
-     * Creates new form SelectParentConcept
+     * Creates new form MappingNewConcept
      */
-    DefaultTableModel model;
-    ArrayList<ParentConcept> parentConcepts;
     NewConcept newConcept;
-    ParentConcept parentConcept = null; 
-    public SelectParentConcept(NewConcept newConcept,ArrayList<ParentConcept> parentConcepts ) {
+    ParentConcept parentConcept;
+    
+    public MappingNewConcept(NewConcept newConcept,ParentConcept parentConcept) {
         this.newConcept = newConcept;
-        this.parentConcepts = parentConcepts;
+        this.parentConcept = parentConcept;
         initComponents();
-        model = (DefaultTableModel) parent_concept_list_table.getModel();
         initUI();
     }
 
     public void initUI(){
-        wiki_head_lbl.setText("Current wiki-Category Head : "+newConcept.currentWikiCategoryHead);
-        alt_dfntion_lbl.setText("Alternative Definition : "+newConcept.alternativeDefinition);
-        parent_concept_head_lbl.setText("Parent Concept Head : "+newConcept.parentConceptHead);
-        System.out.println("parentConcepts Size : "+parentConcepts.size());
-        for (ParentConcept parentConcept : parentConcepts) {
-             //model.insertRow(model.getColumnCount(), new Object[]{ parentConcept.lemma,parentConcept.gloss,parentConcept.pos,parentConcept.id });
-             model.addRow(new Object[]{ parentConcept.lemma,parentConcept.gloss,parentConcept.pos,parentConcept.id });
-        }
+        wiki_head_lbl.setText("Wiki Category Head : "+newConcept.currentWikiCategoryHead);
+        selected_head_lbl.setText("Selected Head : "+newConcept.currentWikiCategoryHead);
+        alt_dfntion_lbl.setText("Alternative Definition : "+newConcept.alternativeDefinition); 
+        parent_concept_head_lbl.setText("Parent Concept Head : "+parentConcept.lemma);
+        parent_concept_id_lbl.setText("Parent Concept Id : "+parentConcept.id);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,8 +47,8 @@ public class SelectParentConcept extends javax.swing.JFrame {
         wiki_head_lbl = new javax.swing.JLabel();
         alt_dfntion_lbl = new javax.swing.JLabel();
         parent_concept_head_lbl = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        parent_concept_list_table = new javax.swing.JTable();
+        parent_concept_id_lbl = new javax.swing.JLabel();
+        selected_head_lbl = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
 
@@ -64,7 +56,7 @@ public class SelectParentConcept extends javax.swing.JFrame {
         setTitle("Enriching Existing Ontology");
 
         titleLbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        titleLbl.setText("Select Parent Concept From The Existing Entitypedia");
+        titleLbl.setText("Mapping New Concept");
 
         wiki_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         wiki_head_lbl.setText("Current wiki-Category Head");
@@ -75,40 +67,11 @@ public class SelectParentConcept extends javax.swing.JFrame {
         parent_concept_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         parent_concept_head_lbl.setText("Parent Concept Head");
 
-        parent_concept_list_table.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        parent_concept_list_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        parent_concept_id_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        parent_concept_id_lbl.setText("Parent Concept Id");
 
-            },
-            new String [] {
-                "Lemma", "Description", "Parts of Speech", "Id"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        parent_concept_list_table.setColumnSelectionAllowed(true);
-        parent_concept_list_table.setRowHeight(45);
-        parent_concept_list_table.setRowMargin(4);
-        parent_concept_list_table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                parent_concept_list_tableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(parent_concept_list_table);
-        parent_concept_list_table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        selected_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        selected_head_lbl.setText("Selected Head");
 
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +80,7 @@ public class SelectParentConcept extends javax.swing.JFrame {
             }
         });
 
-        nextButton.setText("Next");
+        nextButton.setText("Confirm Mapping");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
@@ -128,72 +91,55 @@ public class SelectParentConcept extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(wiki_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(179, 179, 179)
+                                .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(parent_concept_id_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selected_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1039, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(cancelButton)
-                        .addGap(244, 244, 244)
-                        .addComponent(nextButton)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(207, 207, 207)
+                .addComponent(cancelButton)
+                .addGap(244, 244, 244)
+                .addComponent(nextButton)
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(29, 29, 29)
                 .addComponent(wiki_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
+                .addComponent(selected_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(36, 36, 36)
                 .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addComponent(parent_concept_id_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(nextButton))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void parent_concept_list_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_parent_concept_list_tableMouseClicked
-        parentConcept = new ParentConcept(
-                String.valueOf(model.getValueAt(parent_concept_list_table.getSelectedRow(), 0)),
-                String.valueOf(model.getValueAt(parent_concept_list_table.getSelectedRow(), 1)), 
-                String.valueOf(model.getValueAt(parent_concept_list_table.getSelectedRow(), 2)),
-                Long.valueOf(String.valueOf(model.getValueAt(parent_concept_list_table.getSelectedRow(), 3)))
-        );
-    }//GEN-LAST:event_parent_concept_list_tableMouseClicked
-
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        if(parentConcept == null){
-          JOptionPane.showMessageDialog(this, "Plz select Value..!");
-          return;
-        }
-         MappingNewConcept mappingNewConcept = new MappingNewConcept(newConcept, parentConcept);
-         mappingNewConcept.setVisible(true);
-         this.setVisible(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -219,20 +165,20 @@ public class SelectParentConcept extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectParentConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MappingNewConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectParentConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MappingNewConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectParentConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MappingNewConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelectParentConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MappingNewConcept.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new SelectParentConcept().setVisible(true);
+               // new MappingNewConcept().setVisible(true);
             }
         });
     }
@@ -240,10 +186,10 @@ public class SelectParentConcept extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alt_dfntion_lbl;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JLabel parent_concept_head_lbl;
-    private javax.swing.JTable parent_concept_list_table;
+    private javax.swing.JLabel parent_concept_id_lbl;
+    private javax.swing.JLabel selected_head_lbl;
     private javax.swing.JLabel titleLbl;
     private javax.swing.JLabel wiki_head_lbl;
     // End of variables declaration//GEN-END:variables
