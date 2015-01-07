@@ -1,0 +1,54 @@
+
+Current wiki-Category Head : codec
+
+Alternative Definition : A device or computer program capable of encoding or decoding a digital data stream or signal
+
+Parent Concept Head : program
+
+ Offset : 6568978
+
+Gloss : (computer science) a sequence of instructions that a computer can interpret and 
+
+execute; "the program required several hundred lines of code"
+
+Direct hypernyms of "program":
+
+  [PointerTargetNode: [Synset: [Offset: 6566077] [POS: noun] Words: software, 
+
+  software_program, computer_software, software_system, software_package, package -- ((
+
+  computer science) written programs or procedures or rules and associated documentation 
+
+  pertaining to the operation of a computer system and that are stored in read/write 
+
+  memory; "the market for software is expected to expand")] null]
+
+
+1.	SELECT * FROM `synset` WHERE `file_offset` = 6568978
+	{1}
+
+
+2.	SELECT * FROM `synsetword`	 WHERE `synset_id` = '335855'
+	synset_word_id = { 335856, 335857, 335858, 335859 }
+	word           = { program, programme, computer_program, computer_programme }
+
+3.	SELECT * FROM `synsetpointer` WHERE `synset_id` = '335855'
+	{*}
+
+
+4.	SELECT * FROM `synsetverbframe`	 WHERE `synset_id` = '335855'
+	{0}
+
+
+5.	SELECT * FROM `indexwordsynset`	 WHERE `synset_id` = '335855'
+	index_word_id        = { 22844,  22846,  85068,  85060 }
+	index_word_synset_id = { 644463, 644465, 724569, 724589 }
+
+
+6.	SELECT * FROM `indexword`	 WHERE `index_word_id` = { 22844,  22846,  85068,  85060	}
+
+	lemma = { computer program(n), computer program(n),  programme(n), program(n) }
+
+
+
+

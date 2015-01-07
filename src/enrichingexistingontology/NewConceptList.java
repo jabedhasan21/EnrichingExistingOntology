@@ -9,7 +9,10 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumnModel;
-
+import com.eeo.OpenNLP.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Jabed hasan
@@ -22,14 +25,17 @@ public class NewConceptList extends javax.swing.JFrame {
     DefaultTableModel model;
     String sentences[];
     String selectedValue = "";
-    public NewConceptList(String sentences[]) {
+    String titleConcept = "";
+    public NewConceptList(String sentences[],String titleConcept) {
         initComponents();
         this.sentences = sentences;
+        this.titleConcept = titleConcept;
         model = (DefaultTableModel) suggestedCncptTable.getModel();
         initUI();
     }
     
     public void initUI(){
+        titlelabel.setText(titleConcept+" Suggested Concept ");
          for (int i=0; i< 5 ;i++) {
             model.insertRow(model.getColumnCount(), new Object[]{ sentences[i] });
         }
@@ -47,9 +53,10 @@ public class NewConceptList extends javax.swing.JFrame {
         suggestedCncptTable = new javax.swing.JTable();
         nextButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        titlelabel = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("New Concept List");
+        setTitle("Enriching Existing Ontology");
 
         suggestedCncptTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         suggestedCncptTable.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
@@ -188,38 +195,61 @@ public class NewConceptList extends javax.swing.JFrame {
 
         cancelButton.setText("Cancel");
 
+        titlelabel.setFont(new java.awt.Font("PT Sans Caption", 1, 18)); // NOI18N
+        titlelabel.setText("Title");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cancelButton)
+                .addGap(201, 201, 201)
+                .addComponent(nextButton)
+                .addGap(511, 511, 511))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1289, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(cancelButton)
-                .addGap(118, 118, 118)
-                .addComponent(nextButton)
+                .addGap(369, 369, 369)
+                .addComponent(titlelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(45, 45, 45)
+                .addComponent(titlelabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextButton)
                     .addComponent(cancelButton))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        System.out.println(" selectedValue : "+selectedValue);
+        try {
+            System.out.println(" selectedValue : "+selectedValue);
+            String postTag = OpenNLP.POSTag(selectedValue);
+            String[] nouns = OpenNLP.extractNouns(postTag);
+            System.out.println("nouns : "+nouns.length);
+            for (String noun : nouns) {
+                System.out.println(" => "+noun);
+            }
+             DefineNewConcept defineNewConcept = new DefineNewConcept(titleConcept, selectedValue, nouns);
+             this.setVisible(false);
+             defineNewConcept.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(NewConceptList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void suggestedCncptTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suggestedCncptTableMouseClicked
@@ -269,5 +299,6 @@ public class NewConceptList extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JTable suggestedCncptTable;
+    private java.awt.Label titlelabel;
     // End of variables declaration//GEN-END:variables
 }

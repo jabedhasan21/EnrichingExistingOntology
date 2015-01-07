@@ -104,7 +104,7 @@ public class Home extends javax.swing.JFrame {
         if( !edit_word_txt.getText().equals("") ) {
             try {
                 WebContent = Boilerpipe.DefaultExtractor(edit_word_txt.getText());
-                System.out.println("ok : "+ WebContent);
+                //System.out.println("ok : "+ WebContent);
             } catch (IOException ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SAXException ex) {
@@ -116,7 +116,7 @@ public class Home extends javax.swing.JFrame {
         try {
             String sentences[] =  OpenNLP.SentenceDetect(WebContent);
             System.out.println("sentences Length : "+sentences.length);
-            NewConceptList newConceptList = new NewConceptList(sentences);
+            NewConceptList newConceptList = new NewConceptList(sentences,edit_word_txt.getText());
             newConceptList.setVisible(true);
             this.setVisible(false);
         } catch (IOException ex) {
