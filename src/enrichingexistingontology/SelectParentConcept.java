@@ -188,7 +188,7 @@ public class SelectParentConcept extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         if(parentConcept == null){
-          JOptionPane.showMessageDialog(this, "Plz select Value..!");
+          JOptionPane.showMessageDialog(this, "Please Select A Parent Concept ..!");
           return;
         }
          MappingNewConcept mappingNewConcept = new MappingNewConcept(newConcept, parentConcept);

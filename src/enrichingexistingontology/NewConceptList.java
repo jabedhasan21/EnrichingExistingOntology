@@ -145,7 +145,7 @@ public class NewConceptList extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         
         if(selectedValue.equals("")){
-          JOptionPane.showMessageDialog(this, "Plz select Value..!");
+          JOptionPane.showMessageDialog(this, "Please Select A Suggestion ..!");
           return;
         }
         
