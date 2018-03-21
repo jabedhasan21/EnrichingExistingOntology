@@ -33,8 +33,10 @@ public class SelectParentConcept extends javax.swing.JFrame {
     }
 
     public void initUI(){
+        
         wiki_head_lbl.setText("Current wiki-Category Head : "+newConcept.currentWikiCategoryHead);
-        alt_dfntion_lbl.setText("Alternative Definition : "+newConcept.alternativeDefinition);
+        alt_dfntion_lbl.setText("Alternative Definition : ");
+        defineNewConceptTxtArea.setText(""+newConcept.alternativeDefinition);
         parent_concept_head_lbl.setText("Parent Concept Head : "+newConcept.parentConceptHead);
         System.out.println("parentConcepts Size : "+parentConcepts.size());
         for (ParentConcept parentConcept : parentConcepts) {
@@ -59,23 +61,31 @@ public class SelectParentConcept extends javax.swing.JFrame {
         parent_concept_list_table = new javax.swing.JTable();
         cancelButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        defineNewConceptTxtArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Enriching Existing Ontology");
 
-        titleLbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        titleLbl.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        titleLbl.setForeground(new java.awt.Color(37, 56, 96));
         titleLbl.setText("Select Parent Concept From The Existing Entitypedia");
 
-        wiki_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        wiki_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        wiki_head_lbl.setForeground(new java.awt.Color(37, 56, 96));
         wiki_head_lbl.setText("Current wiki-Category Head");
 
-        alt_dfntion_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        alt_dfntion_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        alt_dfntion_lbl.setForeground(new java.awt.Color(37, 56, 96));
         alt_dfntion_lbl.setText("Alternative Definition");
 
-        parent_concept_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        parent_concept_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        parent_concept_head_lbl.setForeground(new java.awt.Color(37, 56, 96));
         parent_concept_head_lbl.setText("Parent Concept Head");
 
         parent_concept_list_table.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        parent_concept_list_table.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        parent_concept_list_table.setForeground(new java.awt.Color(37, 56, 96));
         parent_concept_list_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -124,35 +134,39 @@ public class SelectParentConcept extends javax.swing.JFrame {
             }
         });
 
+        defineNewConceptTxtArea.setColumns(20);
+        defineNewConceptTxtArea.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        defineNewConceptTxtArea.setRows(5);
+        jScrollPane2.setViewportView(defineNewConceptTxtArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cancelButton)
+                .addGap(306, 306, 306)
+                .addComponent(nextButton)
+                .addGap(552, 552, 552))
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 998, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(wiki_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(wiki_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 1316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 1282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1039, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(cancelButton)
-                        .addGap(244, 244, 244)
-                        .addComponent(nextButton)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,17 +175,21 @@ public class SelectParentConcept extends javax.swing.JFrame {
                 .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(wiki_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton)
-                    .addComponent(nextButton))
-                .addContainerGap(103, Short.MAX_VALUE))
+                    .addComponent(nextButton)
+                    .addComponent(cancelButton))
+                .addContainerGap())
         );
 
         pack();
@@ -240,7 +258,9 @@ public class SelectParentConcept extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alt_dfntion_lbl;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JTextArea defineNewConceptTxtArea;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton nextButton;
     private javax.swing.JLabel parent_concept_head_lbl;
     private javax.swing.JTable parent_concept_list_table;

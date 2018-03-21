@@ -24,7 +24,8 @@ public class Boilerpipe {
     
     
     public static String DefaultExtractor(String word) throws MalformedURLException, IOException, SAXException, BoilerpipeProcessingException{
-        String domain = "http://en.wikipedia.org/wiki/";
+        String domain = "https://en.wikipedia.org/wiki/";
+        //String domain = "http://knoworthy.com/?s="; // textpectation
         domain += word ;
         URL url;
         url = new URL(domain); 

@@ -13,7 +13,7 @@ import edu.smu.tspell.wordnet.WordNetDatabase;
 
 public class DbConnection {
     public static WordNetDatabase getDbConnection(){
-		System.setProperty("wordnet.database.dir", "/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/WordNetDB/");
+		System.setProperty("wordnet.database.dir", "/Volumes/Bangali/MyRnD/EnrichingExistingOntology/WordNetDB/");
 		return WordNetDatabase.getFileInstance();
     }
 }

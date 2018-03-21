@@ -42,7 +42,7 @@
 			     /Volumes/Bangali/AIUB/Thesis/Wordnet/WordNet-2.1/dict
 			     /Volumes/Bangali/Code/javaWorkSpace/workspace/SAM/dict
 			 -->
-			 <param name="dictionary_path" value="/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/WordNetDB/"/> 
+			 <param name="dictionary_path" value="/Volumes/Bangali/MyRnD/EnrichingExistingOntology/WordNetDB/"/> 
 		</param>
 	</dictionary>
 	<resource class="PrincetonResource"/>

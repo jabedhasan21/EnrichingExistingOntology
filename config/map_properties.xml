@@ -36,7 +36,7 @@
 			</param>
 		</param>
 		<param name="file_type" value="net.didion.jwnl.princeton.file.PrincetonObjectDictionaryFile"/>
-		<param name="dictionary_path" value="/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/WordNetDB/"/>
+		<param name="dictionary_path" value="/Volumes/Bangali/MyRnD/EnrichingExistingOntology/WordNetDB/"/>
 	</dictionary>
-	<resource class="/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/WordNetDB/"/>
+	<resource class="/Volumes/Bangali/MyRnD/EnrichingExistingOntology/WordNetDB/"/>
 </jwnl_properties>

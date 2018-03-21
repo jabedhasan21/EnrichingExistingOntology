@@ -49,7 +49,7 @@ import opennlp.tools.parser.Parse;
  * @author Jabed hasan
  */
 public class OpenNLP {
-    public static String RESOURCES = "/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/resources/";
+    public static String RESOURCES = "/Volumes/Bangali/MyRnD/EnrichingExistingOntology/resources/";
     
     public static String[] SentenceDetect(String paragraph) throws InvalidFormatException,IOException {
 		

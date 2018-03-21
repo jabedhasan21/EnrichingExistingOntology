@@ -54,7 +54,7 @@ public class JawsAPI {
                 }
         }
         else{
-            JawsAPI.resultAPI += "Nathing Found.\n Here we will Apply Enriching Existing Ontology Using Semi-Automated Method";
+            JawsAPI.resultAPI += "\t\tNothing Found.....\\n Here we will Apply Enriching Existing Ontology Using Semi-Automated Method";
         }
     }
     
@@ -126,7 +126,7 @@ public class JawsAPI {
                 JawsAPI.resultAPI += "Input Properly ";
 
         if(JawsAPI.resultAPI.equals("") && (!word.equals("")))
-               JawsAPI.resultAPI += "Nathing Found.\n Here we will Apply Enriching Existing Ontology Using Semi-Automated Method";
+               JawsAPI.resultAPI += "\t\tNothing Found....\n Here We Will Apply Enriching Existing Ontology Using Semi-Automated Method";
 
     } 
         

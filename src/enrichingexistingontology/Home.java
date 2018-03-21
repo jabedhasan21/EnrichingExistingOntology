@@ -18,6 +18,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import org.xml.sax.SAXException;
+
+import java.time.Instant;
+import java.time.temporal.Temporal;
+import java.time.temporal.ChronoUnit;
 /**
  *
  * @author jabed hasan
@@ -41,49 +45,49 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title_lbl = new javax.swing.JLabel();
         edit_word_txt = new javax.swing.JTextField();
         search_btn = new javax.swing.JButton();
         result_scrollPane = new java.awt.ScrollPane();
         result_textArea = new java.awt.TextArea();
         go_wikipedia_btn = new javax.swing.JButton();
+        titlelabel = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Enriching Existing Ontology");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title_lbl.setBackground(new java.awt.Color(0, 102, 102));
-        title_lbl.setFont(new java.awt.Font("Al Nile", 1, 24)); // NOI18N
-        title_lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title_lbl.setText("Enriching Existing Ontology");
-        title_lbl.setEnabled(false);
-        getContentPane().add(title_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 520, -1));
-        title_lbl.getAccessibleContext().setAccessibleName("title_lbl");
-        title_lbl.getAccessibleContext().setAccessibleDescription("");
-
+        edit_word_txt.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         edit_word_txt.setToolTipText("Word");
-        getContentPane().add(edit_word_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 182, -1));
+        getContentPane().add(edit_word_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 182, -1));
         edit_word_txt.getAccessibleContext().setAccessibleName("edit_word_txt");
 
+        search_btn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         search_btn.setText("Search");
         search_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 search_btnActionPerformed(evt);
             }
         });
-        getContentPane().add(search_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        getContentPane().add(search_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 160, 40));
 
+        result_textArea.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         result_scrollPane.add(result_textArea);
 
-        getContentPane().add(result_scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 650, 310));
+        getContentPane().add(result_scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 950, 380));
 
+        go_wikipedia_btn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         go_wikipedia_btn.setText("Go Wikipedia");
         go_wikipedia_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 go_wikipedia_btnActionPerformed(evt);
             }
         });
-        getContentPane().add(go_wikipedia_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, -1, -1));
+        getContentPane().add(go_wikipedia_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 500, -1, 40));
+
+        titlelabel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        titlelabel.setForeground(new java.awt.Color(59, 89, 152));
+        titlelabel.setText("Enriching Existing Ontology");
+        getContentPane().add(titlelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,10 +105,19 @@ public class Home extends javax.swing.JFrame {
 
     private void go_wikipedia_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_go_wikipedia_btnActionPerformed
      
+        Instant previous, current;
+        
         if( !edit_word_txt.getText().equals("") ) {
             try {
+                System.out.println("Searching....."+edit_word_txt.getText());
+                 previous = Instant.now();
                 WebContent = Boilerpipe.DefaultExtractor(edit_word_txt.getText());
                 //System.out.println("ok : "+ WebContent);
+                current = Instant.now();
+                if (previous != null) {
+                 long gap = ChronoUnit.MILLIS.between(previous,current);
+                 System.out.println("Searching Time : "+gap+"ms");
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SAXException ex) {
@@ -115,7 +128,7 @@ public class Home extends javax.swing.JFrame {
         }
         try {
             String sentences[] =  OpenNLP.SentenceDetect(WebContent);
-            System.out.println("sentences Length : "+sentences.length);
+            System.out.println("Detected sentences count from Web Content paragraph: "+sentences.length);
             NewConceptList newConceptList = new NewConceptList(sentences,edit_word_txt.getText());
             newConceptList.setVisible(true);
             this.setVisible(false);
@@ -165,6 +178,6 @@ public class Home extends javax.swing.JFrame {
     private java.awt.ScrollPane result_scrollPane;
     private java.awt.TextArea result_textArea;
     private javax.swing.JButton search_btn;
-    private javax.swing.JLabel title_lbl;
+    private java.awt.Label titlelabel;
     // End of variables declaration//GEN-END:variables
 }

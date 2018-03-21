@@ -37,7 +37,8 @@ public class NewConceptList extends javax.swing.JFrame {
     
     public void initUI(){
         titlelabel.setText(titleConcept+" Suggested Concept ");
-         for (int i=0; i< 5 ;i++) {
+         for (int i=0; i< sentences.length ;i++) {
+             System.out.println("sentences: "+i+": "+sentences[i]);
             //model.insertRow(model.getColumnCount(), new Object[]{ sentences[i] });
             model.addRow(new Object[]{ sentences[i] });
         }
@@ -61,7 +62,8 @@ public class NewConceptList extends javax.swing.JFrame {
         setTitle("Enriching Existing Ontology");
 
         suggestedCncptTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
-        suggestedCncptTable.setFont(new java.awt.Font("Malayalam MN", 1, 14)); // NOI18N
+        suggestedCncptTable.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        suggestedCncptTable.setForeground(new java.awt.Color(59, 89, 152));
         suggestedCncptTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -104,7 +106,8 @@ public class NewConceptList extends javax.swing.JFrame {
             }
         });
 
-        titlelabel.setFont(new java.awt.Font("PT Sans Caption", 1, 18)); // NOI18N
+        titlelabel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        titlelabel.setForeground(new java.awt.Color(59, 89, 152));
         titlelabel.setText("Title");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,25 +121,25 @@ public class NewConceptList extends javax.swing.JFrame {
                 .addComponent(nextButton)
                 .addGap(511, 511, 511))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1289, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(369, 369, 369)
                 .addComponent(titlelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(425, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(titlelabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextButton)
                     .addComponent(cancelButton))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();

@@ -26,7 +26,7 @@ import net.didion.jwnl.dictionary.Dictionary;
  */
 public class JwnlAPI {
     
-    public static String propsFile =  "/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/config/file_properties.xml";
+    public static String propsFile =  "/Volumes/Bangali/MyRnD/EnrichingExistingOntology/config/file_properties.xml";
     private IndexWord indexWord;
     private String parentConceptHead;
     private ArrayList<ParentConcept> parentConcepts;

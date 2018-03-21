@@ -82,8 +82,8 @@ public class DictionaryToDatabase
     	  * 
     	  * */
     	String args[] ={
-    			"/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/config/file_properties.xml",
-    			"/Users/ammaryeahyea/NetBeansProjects/EnrichingExistingOntology/sql/create.sql",
+    			"/Volumes/Bangali/MyRnD/EnrichingExistingOntology/config/file_properties.xml",
+    			"/Volumes/Bangali/MyRnD/EnrichingExistingOntology/sql/create.sql",
     			"com.mysql.jdbc.Driver",
     			"jdbc:mysql://localhost/wordnet_32",
     			"root",

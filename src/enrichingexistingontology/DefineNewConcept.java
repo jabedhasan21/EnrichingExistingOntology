@@ -64,22 +64,28 @@ public class DefineNewConcept extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Enriching Existing Ontology");
 
-        titlelabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        titlelabel.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        titlelabel.setForeground(new java.awt.Color(47, 71, 121));
         titlelabel.setText("Create New Concept");
 
-        conceptNameLbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        conceptNameLbl.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        conceptNameLbl.setForeground(new java.awt.Color(47, 71, 121));
         conceptNameLbl.setText("New Concept Name");
 
+        conceptNameTxtFld.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         conceptNameTxtFld.setText("textField1");
 
-        defineNewConceptLbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        defineNewConceptLbl.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        defineNewConceptLbl.setForeground(new java.awt.Color(47, 71, 121));
         defineNewConceptLbl.setText("Defien New Concept");
 
         defineNewConceptTxtArea.setColumns(20);
+        defineNewConceptTxtArea.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         defineNewConceptTxtArea.setRows(5);
         jScrollPane1.setViewportView(defineNewConceptTxtArea);
 
-        headNewConceptLbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        headNewConceptLbl.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        headNewConceptLbl.setForeground(new java.awt.Color(47, 71, 121));
         headNewConceptLbl.setText("Define head of the new concept");
 
         cancelButton.setText("Cancel");
@@ -96,6 +102,7 @@ public class DefineNewConcept extends javax.swing.JFrame {
             }
         });
 
+        conceptHeadComboBox.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         conceptHeadComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 conceptHeadComboBoxItemStateChanged(evt);
@@ -109,58 +116,58 @@ public class DefineNewConcept extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(458, 458, 458)
-                        .addComponent(titlelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(defineNewConceptLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(conceptNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(headNewConceptLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(defineNewConceptLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(conceptNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(headNewConceptLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(conceptNameTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(conceptNameTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
                             .addComponent(conceptHeadComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelButton)
-                .addGap(314, 314, 314)
-                .addComponent(nextButton)
-                .addGap(325, 325, 325))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(487, 487, 487)
+                        .addComponent(titlelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(498, 498, 498)
+                        .addComponent(cancelButton)
+                        .addGap(237, 237, 237)
+                        .addComponent(nextButton)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(39, 39, 39)
                 .addComponent(titlelabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conceptNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(conceptNameTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(conceptNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(conceptNameTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(defineNewConceptLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(headNewConceptLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(conceptHeadComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(206, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nextButton)
-                            .addComponent(cancelButton))
-                        .addGap(120, 120, 120))))
+                        .addComponent(defineNewConceptLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(headNewConceptLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(conceptHeadComboBox))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(nextButton))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -180,10 +187,12 @@ public class DefineNewConcept extends javax.swing.JFrame {
         
         for (ParentConcept parentConcept : parentConcepts) {
             System.out.println("==============================");
+            System.out.println("id : "+parentConcept.id);
             System.out.println("lemma : "+parentConcept.lemma);
             System.out.println("gloss : "+parentConcept.gloss);
             System.out.println("POS : "+parentConcept.pos);
             System.out.println("==============================");
+          
         }
         
         SelectParentConcept selectParentConcept = new SelectParentConcept(newConcept, parentConcepts);

@@ -30,7 +30,8 @@ public class MappingNewConcept extends javax.swing.JFrame {
     public void initUI(){
         wiki_head_lbl.setText("Wiki Category Head : "+newConcept.currentWikiCategoryHead);
         selected_head_lbl.setText("Selected Head : "+newConcept.currentWikiCategoryHead);
-        alt_dfntion_lbl.setText("Alternative Definition : "+newConcept.alternativeDefinition); 
+        alt_dfntion_lbl.setText("Alternative Definition"); 
+        defineNewConceptTxtArea.setText(""+newConcept.alternativeDefinition); 
         parent_concept_head_lbl.setText("Parent Concept Head : "+parentConcept.lemma);
         parent_concept_id_lbl.setText("Parent Concept Id : "+parentConcept.id);
     }
@@ -51,26 +52,34 @@ public class MappingNewConcept extends javax.swing.JFrame {
         selected_head_lbl = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        defineNewConceptTxtArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Enriching Existing Ontology");
 
-        titleLbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        titleLbl.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        titleLbl.setForeground(new java.awt.Color(37, 56, 96));
         titleLbl.setText("Mapping New Concept");
 
-        wiki_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        wiki_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        wiki_head_lbl.setForeground(new java.awt.Color(37, 56, 96));
         wiki_head_lbl.setText("Current wiki-Category Head");
 
-        alt_dfntion_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        alt_dfntion_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        alt_dfntion_lbl.setForeground(new java.awt.Color(37, 56, 96));
         alt_dfntion_lbl.setText("Alternative Definition");
 
-        parent_concept_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        parent_concept_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        parent_concept_head_lbl.setForeground(new java.awt.Color(37, 56, 96));
         parent_concept_head_lbl.setText("Parent Concept Head");
 
-        parent_concept_id_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        parent_concept_id_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        parent_concept_id_lbl.setForeground(new java.awt.Color(37, 56, 96));
         parent_concept_id_lbl.setText("Parent Concept Id");
 
-        selected_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        selected_head_lbl.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        selected_head_lbl.setForeground(new java.awt.Color(37, 56, 96));
         selected_head_lbl.setText("Selected Head");
 
         cancelButton.setText("Cancel");
@@ -87,6 +96,11 @@ public class MappingNewConcept extends javax.swing.JFrame {
             }
         });
 
+        defineNewConceptTxtArea.setColumns(20);
+        defineNewConceptTxtArea.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        defineNewConceptTxtArea.setRows(5);
+        jScrollPane1.setViewportView(defineNewConceptTxtArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,45 +108,58 @@ public class MappingNewConcept extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(parent_concept_id_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(wiki_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(179, 179, 179)
-                                .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(parent_concept_id_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(selected_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(wiki_head_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selected_head_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(746, 746, 746))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1333, 1333, 1333))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(cancelButton)
-                .addGap(244, 244, 244)
-                .addComponent(nextButton)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cancelButton)
+                                .addGap(223, 223, 223)
+                                .addComponent(nextButton)))))
+                .addGap(566, 566, 566))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(17, 17, 17)
                 .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(wiki_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(selected_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(alt_dfntion_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(parent_concept_head_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(parent_concept_id_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(nextButton))
-                .addGap(43, 43, 43))
+                .addContainerGap())
         );
 
         pack();
@@ -140,6 +167,7 @@ public class MappingNewConcept extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
+       System.out.println("Here need to map new concept");
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -186,6 +214,8 @@ public class MappingNewConcept extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alt_dfntion_lbl;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JTextArea defineNewConceptTxtArea;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JLabel parent_concept_head_lbl;
     private javax.swing.JLabel parent_concept_id_lbl;
